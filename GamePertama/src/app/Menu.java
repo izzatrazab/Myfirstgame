@@ -16,7 +16,7 @@ public class Menu extends MouseAdapter{
     private Handler handler;
     private Random r = new Random();
     private HUD hud;
-
+    
     public Menu(GamePertama game, Handler handler,HUD hud){
         this.game = game;
         this.handler = handler;
@@ -82,7 +82,7 @@ public class Menu extends MouseAdapter{
             
             //menu button after death
             if(mouseOver(mx, my,500, 387, 74, 25)){
-                
+                Sound.gameMusic.loop();
                 game.gameState = STATE.Menu;
                 hud.setHealth(100);
                 hud.setScore(0);

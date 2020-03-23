@@ -51,7 +51,7 @@ public class GamePertama extends Canvas implements Runnable{
         
         
         spawner = new Spawn(handler,hud,this);
-       
+        Sound.gameMusic.loop();
         //r = new Random();
         
         
@@ -82,7 +82,7 @@ public class GamePertama extends Canvas implements Runnable{
         double ns = 1000000000/amountOfTicks;
         double delta = 0;
         long timer = System.currentTimeMillis();
-        int frames = 0;
+        //int frames = 0;
         while(running){
             long now = System.nanoTime();
             delta += (now - lastTime)/ns;
@@ -93,12 +93,12 @@ public class GamePertama extends Canvas implements Runnable{
             }
             if(running)
                 render();
-            frames++;
+            //frames++;
 
             if(System.currentTimeMillis() - timer > 1000){
                 timer += 1000;
-                System.out.println("FPS: "+ frames);
-                frames = 0;
+                //System.out.println("FPS: "+ frames);
+                //frames = 0;
             }
         }
         stop();
@@ -107,7 +107,9 @@ public class GamePertama extends Canvas implements Runnable{
     private void tick(){
         
         if(gameState == STATE.Game){
+            
             if(paused == false){
+                Sound.gameMusic.unpause();
                 hud.tick();
                 spawner.tick();
                 handler.tick();
@@ -116,8 +118,12 @@ public class GamePertama extends Canvas implements Runnable{
                 if(HUD.HEALTH <=0){
 
                     gameState = STATE.End;
+                    Sound.gameMusic.stop();
+                    Sound.dieSound.play();
+                    
                     Spawn.scoreKeep=0;
                     handler.clearAll();
+                    
                 }
             }
             
@@ -146,7 +152,7 @@ public class GamePertama extends Canvas implements Runnable{
         handler.render(g);
 
         if(paused){
-            
+            Sound.gameMusic.pause();
             g.setColor(Color.white);
             g.drawString("PAUSED", 100,100);
         }
@@ -174,4 +180,5 @@ public class GamePertama extends Canvas implements Runnable{
     public static void main(String[] args){
         new GamePertama();
     }
+   
 }

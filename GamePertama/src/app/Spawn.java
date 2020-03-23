@@ -8,10 +8,9 @@ public class Spawn{
     private Handler handler;
     private HUD hud;
     private GamePertama game;
+    private int delayer=0;
     private java.util.Random r = new Random();
     //start num of enemy
-    private int numbasicenemy = 8;
-    private int numfastenemy  = 3;
     
 
 
@@ -68,7 +67,7 @@ public class Spawn{
                 for(int o = 0;o<10;o++)
                 handler.addObject(new SmartEnemy(r.nextInt(GamePertama.WIDTH-35),r.nextInt(GamePertama.HEIGHT-60),ID.SmartEnemy,handler));
             }else if(scoreKeep==1&&(hud.getLevel()==7)){
-                handler.addObject(new EnemyBoss(GamePertama.WIDTH/2-46,-120,ID.EnemyBoss, handler));
+                handler.addObject(new EnemyBoss(GamePertama.WIDTH/2-46,-150,ID.EnemyBoss, handler));
        
             }
 
@@ -116,20 +115,20 @@ public class Spawn{
                 for(int o = 0;o<10;o++)
                 handler.addObject(new SmartEnemy(r.nextInt(GamePertama.WIDTH-35),r.nextInt(GamePertama.HEIGHT-60),ID.SmartEnemy,handler));
             }else if(scoreKeep==1&&(hud.getLevel()==7)){
-                handler.addObject(new EnemyBoss(GamePertama.WIDTH/2-46,-120,ID.EnemyBoss, handler));
+                handler.addObject(new EnemyBoss(GamePertama.WIDTH/2-46,-150,ID.EnemyBoss, handler));
                 for(int o = 0;o<10;o++)
                 handler.addObject(new SmartEnemy(r.nextInt(GamePertama.WIDTH-35),r.nextInt(GamePertama.HEIGHT-60),ID.SmartEnemy,handler));
-          
+                
             }
         }
         
-        }else if(scoreKeep==700)handler.clearEnemies();
+        }else if(scoreKeep==700&&hud.getLevel()!=7)handler.clearEnemies();
         
         
-        if(scoreKeep >= 700&&hud.getLevel()==7){
+        if(scoreKeep >= 1200&&hud.getLevel()==7){
             game.gameState=STATE.Win;
             handler.clearAll();
-        }else if(scoreKeep >= 750){
+        }else if(scoreKeep >= 750&&hud.getLevel()!=7){
             scoreKeep = 0;
             //increase level
             hud.setLevel(hud.getLevel()+1);
