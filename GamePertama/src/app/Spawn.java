@@ -8,7 +8,7 @@ public class Spawn{
     private Handler handler;
     private HUD hud;
     private GamePertama game;
-    private int delayer=0;
+    //private int delayer=0; not use for now
     private java.util.Random r = new Random();
     //start num of enemy
     
