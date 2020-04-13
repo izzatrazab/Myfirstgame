@@ -6,7 +6,7 @@ import java.awt.Graphics;
 
 public class HUD{
 
-    public static int HEALTH = 1;
+    public static int HEALTH = 100;
     private int greenValue = 255;
     private int delay = 0;
     private int score = 0;
