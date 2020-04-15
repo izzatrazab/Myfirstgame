@@ -136,7 +136,10 @@ public class Spawn{
             //each level health increase by 10
             if(hud.getHealth()+10>=100){
                 hud.setHealth(100);
-            }else hud.setHealth(hud.getHealth()+10);
+            }else {
+                hud.setHealth(hud.getHealth()+10);
+                hud.setScore(hud.getScore()+hud.getHealth());
+            }
         }
         if(hud.getHealth()<=0){
             scoreKeep=0;
