@@ -53,12 +53,14 @@ public class Sound {
 
     // play, stop, loop the sound clip
     }
+    
     public void play(){
         clip.setFramePosition(0);  // Must always rewind!
         clip.start();
         if (clip.isRunning())
             clip.stop();
     }
+
     public void loop(){
         clip.loop(Clip.LOOP_CONTINUOUSLY);
     }
@@ -69,13 +71,12 @@ public class Sound {
 
     public void stop(){
             clip.stop();
-            
-            
     }
 
     public boolean isRunning(){
         return clip.isActive();
     }
+
     public void pause(){
         clip.stop();
     }
@@ -83,6 +84,4 @@ public class Sound {
     public void unpause(){
         clip.start();
     }
-    
-    
 }
