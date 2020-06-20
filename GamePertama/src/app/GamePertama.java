@@ -161,7 +161,7 @@ public class GamePertama extends Canvas implements Runnable{
         }else if(gameState == STATE.Menu || gameState == STATE.Help|| gameState == STATE.End||gameState==STATE.Select||gameState==STATE.Win){
             menu.render(g);
         }
-        //hud.render(g);
+        hud.render(g);
 
         g.dispose();
         bs.show();
